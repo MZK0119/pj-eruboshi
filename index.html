@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<title></title>
+<title>えるぼし認定紹介</title>
 <link rel="stylesheet" type="text/css" href="pj.css">
 <script src="jquery-3.7.1.min.js"></script>
 <script>
@@ -15,21 +15,14 @@ $(function() {
 
     $(accordionSummary).each(function() {
       $(this).on("click", function(event) {
-        // summaryにis-activeクラスを切り替え
         $(this).toggleClass("is-active");
-        // デフォルトの挙動を無効化
         event.preventDefault();
         if ($(this).parent($(accordionDetails)).attr("open")) {
-          // アコーディオンを閉じるときの処理
           $(this).nextAll($(accordionContent)).slideUp(speed, function() {
-            // アニメーションの完了後にopen属性を取り除く
             $(this).parent($(accordionDetails)).removeAttr("open");
           });
         } else {
-          // アコーディオンを開くときの処理
-          // open属性を付ける
           $(this).parent($(accordionDetails)).attr("open", "true");
-          // いったんdisplay:none;してからslideDownで開く
           $(this).nextAll($(accordionContent)).hide().slideDown(speed);
         }
       })
